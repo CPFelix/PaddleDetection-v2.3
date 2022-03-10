@@ -1,0 +1,19 @@
+metric: COCO
+num_classes: 4
+
+TrainDataset:
+  !COCODataSet
+    image_dir: train/image
+    anno_path: train/train.json
+    dataset_dir: /home/chenpengfei/dataset/DSM_Dataset_class4_20220211_fukang
+    data_fields: ['image', 'gt_bbox', 'gt_class', 'is_crowd']
+
+EvalDataset:
+  !COCODataSet
+    image_dir: val/image
+    anno_path: val/val.json
+    dataset_dir: /home/chenpengfei/dataset/DSM_Dataset_class4_20220211_fukang
+
+TestDataset:
+  !ImageFolder
+    anno_path: val/val.json

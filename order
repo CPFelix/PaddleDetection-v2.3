@@ -1,0 +1,10 @@
+export CUDA_VISIBLE_DEVICES=0,1,2,3,4,5,6,7
+
+python -m paddle.distributed.launch --gpus 5,6,7,8 tools/train.py -c configs/picodet/picodet_s_320_DSM_Dataset_class4_20220211_fukang.yml
+
+python -m paddle.distributed.launch --gpus 4,5 tools/train.py -c configs/picodet/picodet_s_320X192_DSM_Dataset_class4_20220211_fukang.yml
+
+
+
+python -u tools/eval.py -c configs/picodet/picodet_s_320X192_DSM_Dataset_class4_20220211_fukang.yml \
+                        -o weights=output/picodet_s_320X192_DSM_Dataset_class4_20220211_fukang/109.pdparams
